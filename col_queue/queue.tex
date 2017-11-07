@@ -25,16 +25,32 @@
 ``The scoreboard package uses package generics to allow the test value type and receive value type to 
 be changed. Furthermore the function to compare the test value with the receive value is pass as a 
 subprogram generic to allow more complicated checking than a simple ``='' to be done. In addition 
-there are functions expected\_to\_string and actual\_to\_string to help printing the values of Expected type 
-and ActualType respectively.''\\
+
 \begin{wrapfigure}{r}{0.25\textwidth}
   \centering
   \includegraphics[width=0.25\textwidth]{jl}
 \end{wrapfigure}
 \noindent
+there are functions expected\_to\_string and actual\_to\_string to help printing the values of Expected type 
+and ActualType respectively.''\\
+\noindent
 ``Tagged Scoreboards are usd for systems that allow transactions to execute out of order. Tags are represented 
 as string values (since most types convert to string using to\_string.''\\
 
+\noindent
+\textbf{shared variable SB : ScoreBoardPType;} or\\
+\textbf{shared variable SB\_uart : work.ScoreBoardPkg\_Uart.ScoreboardPType;}\\
+
+\noindent
+SB.Push(ExpectedVal); SB.Check(ReceiveVal); SB.Pop(ExpectedVal);\\
+
+\noindent
+\textbf{\underline{ScoreboardGenericPkg}}\\
+-- simple version\\
+procedure push( item : in ExpectedType);\\
+procedure push( constant tag : in string;\\
+                constant item : in ExpectedType);\\
+-- array version
 
 
 \end{document}
