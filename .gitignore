@@ -1,2 +1,7 @@
 # emacs backup
 *.*~
+
+# pdflatex
+*.aux
+*.log
+*.pdf
